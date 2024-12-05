@@ -1,13 +1,7 @@
-#include <fcntl.h>
-#include <stdio.h>
+#include "get_next_line.h"
 
 int	main()
 {
-	int	fd;
-	char	*c;
-
-	fd = open("test.txt", O_RDONLY);
-	read(fd, c, 1);
-	printf("%d\n", fd);
-	printf("%c", c[0]);
+	ft_strdup("");
+	ft_strjoin("hello", "world");
 }
