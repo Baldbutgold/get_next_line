@@ -8,12 +8,20 @@ char	*get_next_line(int fd)
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	buffer[BUFFER_SIZE] = 0; //must nul terminate the read results
 	line = ft_strdup("");
-	while (ft_strchr(buffer, '\n') == -1)
+	//issue here is that the if will always trigger :)
+	if (ft_strchr(buffer, '\n') == -1)
 	{
-		read(fd, buffer, BUFFER_SIZE);
-		line = ft_strjoin(line, buffer);
+		while (ft_strchr(buffer, '\n') == -1)
+		{
+			printf("while triggered");
+			read(fd, buffer, BUFFER_SIZE);
+			line = ft_strjoin(line, buffer);
+		}
 	}
-//	line = ft_substr(buffer, 0, ft_strchr(buffer, '\n') + 1);
+	else
+	{
+		line = ft_substr(buffer, 0, ft_strchr(buffer, '\n') + 1);
+	}
 	return line;
 }
 int	main()
@@ -23,10 +31,11 @@ int	main()
 
 	fd = open("test.txt", O_RDONLY);
 	c = get_next_line(fd);
-	int i = 0;
-	while (i < ft_strlen(c))
-	{
-		printf("char : %c, value is %d\n", c[i], c[i]);
-		i++;
-	}
+	printf("%s", c);
+	/*int i = 0;*/
+	/*while (i < ft_strlen(c))*/
+	/*{*/
+	/*	printf("char : %c, value is %d\n", c[i], c[i]);*/
+	/*	i++;*/
+	/*}*/
 }
