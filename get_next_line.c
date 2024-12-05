@@ -3,8 +3,10 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*read;
+	char		*buffer;
 
+	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	return buffer;
 }
 int	main()
