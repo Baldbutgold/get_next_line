@@ -1,13 +1,15 @@
-#include <fcntl.h>
-#include <stdio.h>
+#include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
-	static char	*read;
-	char		*buffer;
+	static char	*buffer;
+	char		*line;
 
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	return buffer;
+	read(fd, buffer, BUFFER_SIZE);
+	printf("%d", ft_strchr(buffer, '\n'));
+	line = ft_substr(buffer, 0, ft_strchr(buffer, '\n'));
+	return line;
 }
 int	main()
 {
@@ -15,7 +17,5 @@ int	main()
 	char	*c;
 
 	fd = open("test.txt", O_RDONLY);
-	read(fd, c, 1);
-	printf("%d\n", fd);
-	printf("%c", c[0]);
+	printf("%s", get_next_line(fd));
 }

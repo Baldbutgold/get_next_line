@@ -1,7 +1,6 @@
-#include "get_next_line.h"
-
+#include <fcntl.h>
 int	main()
 {
-	ft_strdup("");
-	ft_strjoin("hello", "world");
+	open("test.txt", O_RDONLY);
+	sleep(1100000);
 }

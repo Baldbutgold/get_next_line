@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strchr(const char *s, int c)
 {
 	size_t	i;
 
@@ -8,10 +8,10 @@ char	*ft_strchr(const char *s, int c)
 	while (i <= ft_strlen(s))
 	{
 		if ((unsigned char)s[i] == c)
-			return ((char *)s + i);
+			return (i);
 		i++;
 	}
-	return (NULL);
+	return 0;
 }
 
 char	*ft_strdup(const char *s)
@@ -52,7 +52,7 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	s_len;
@@ -73,4 +73,17 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		str[i++] = s[start++];
 	str[i] = '\0';
 	return (str);
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)dest)[i] = ((const unsigned char *)src)[i];
+		i++;
+	}
+	return (dest);
 }
