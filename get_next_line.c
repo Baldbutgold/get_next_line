@@ -5,23 +5,22 @@ char	*get_next_line(int fd)
 	char		*buffer;
 	static char	*line;
 
+	if (BUFFER_SIZE <= 0 || fd < 0)
+		return (NULL);
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	buffer[BUFFER_SIZE] = 0; //must nul terminate the read results
 	line = ft_strdup("");
-	//issue here is that the if will always trigger :)
-	if (ft_strchr(buffer, '\n') == -1)
+	read(fd, buffer, BUFFER_SIZE);
+	if (ft_strchr(buffer, '\n') >= 0)
 	{
-		while (ft_strchr(buffer, '\n') == -1)
-		{
-			printf("while triggered");
-			read(fd, buffer, BUFFER_SIZE);
-			line = ft_strjoin(line, buffer);
-		}
+		printf("new line is here\n");
+		//extract text here
 	}
 	else
 	{
-		line = ft_substr(buffer, 0, ft_strchr(buffer, '\n') + 1);
+		printf("no new line was found\n");
+		//read more here
 	}
+	line = ft_strjoin(line, buffer);
 	return line;
 }
 int	main()
