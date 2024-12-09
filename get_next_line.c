@@ -13,7 +13,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
-		return (NULL);
+		return (free(buffer), NULL);
 	if (!line)
 		line = ft_strdup("");
 	while (ft_strchr(line, '\n') == -1 && read_pos != 0)

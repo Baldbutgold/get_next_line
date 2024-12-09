@@ -5,13 +5,6 @@ int	main()
 	char	*line;
 
 	fd = open("test.txt", O_RDONLY);
-	line = malloc(BUFFER_SIZE + 1);
-	line = get_next_line(fd);
-	printf("%s", line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	line = get_next_line(fd);
-	printf("%s", line);
+	while((line = get_next_line(fd)) > 0)
+		printf("%s", line);
 }
