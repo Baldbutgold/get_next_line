@@ -5,6 +5,10 @@ int	main()
 	char	*line;
 
 	fd = open("test.txt", O_RDONLY);
-	while((line = get_next_line(fd)) > 0)
+	line = get_next_line(fd);
+	while(line != NULL)
+	{
 		printf("%s", line);
+		line = get_next_line(fd);
+	}
 }
