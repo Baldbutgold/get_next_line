@@ -1,1 +1,7 @@
 hello this is line 1
+	if (r_pos == 0 && (!line || *line == '\0'))
+	{
+		free(line);
+		line = NULL;
+		return (NULL);
+	}
