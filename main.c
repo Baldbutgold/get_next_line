@@ -4,12 +4,11 @@ int	main()
 	int	fd;
 	char	*line;
 
-	fd = open("big_line_no_nl", O_RDONLY);
-	line = get_next_line(fd);
-	while(line != NULL)
+	fd = open("test.txt", O_RDONLY);
+
+	while((line = get_next_line(fd)))
 	{
 		printf("%s", line);
-		line = get_next_line(fd);
+		free(line);
 	}
-	free(line);
 }
