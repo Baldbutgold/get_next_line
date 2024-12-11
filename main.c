@@ -11,4 +11,5 @@ int	main()
 		printf("%s", line);
 		line = get_next_line(fd);
 	}
+	free(line);
 }

@@ -4,7 +4,7 @@ char	*get_next_line(int fd)
 {
 	char		*buffer;
 	char		*return_line;
-	static	char	*line;
+	static	char	*line = NULL;
 	ssize_t		read_pos;
 	int		newline_pos;
 
@@ -46,3 +46,4 @@ char	*get_next_line(int fd)
 // free when in problem
 // test if malloc a string twice does it free correctly
 // free if read gives -1
+// so with the static i need to free whenever i m trying 
